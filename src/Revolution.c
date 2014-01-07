@@ -497,7 +497,7 @@ void init() {
   GRect date_layer_frame = GRectZero;
   date_layer_frame.size.w   = DATE_IMAGE_WIDTH + MARGIN + DATE_IMAGE_WIDTH + DATE_PART_SPACE + DATE_IMAGE_WIDTH + MARGIN + DATE_IMAGE_WIDTH;
   date_layer_frame.size.h   = DATE_IMAGE_HEIGHT;
-  date_layer_frame.origin.x = (SCREEN_WIDTH - date_layer_frame.size.w) / 2;
+  date_layer_frame.origin.x = (SCREEN_WIDTH - date_layer_frame.size.w) - 1;
   date_layer_frame.origin.y = footer_height - DATE_IMAGE_HEIGHT - MARGIN;
 
   date_layer = layer_create(date_layer_frame);
@@ -517,7 +517,7 @@ void init() {
     SECOND_IMAGE_HEIGHT
   );
   seconds_layer = layer_create(seconds_layer_frame);
-  layer_add_child(footer_layer, seconds_layer);
+  // layer_add_child(footer_layer, seconds_layer);
 
 
   // Display
@@ -528,7 +528,7 @@ void init() {
   display_date(tick_time);
   display_seconds(tick_time);
 
-  tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
+  // tick_timer_service_subscribe(SECOND_UNIT, handle_second_tick);
 }
 
 void handle_second_tick(struct tm *tick_time, TimeUnits units_changed) {
